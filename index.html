@@ -33,8 +33,13 @@
       <input
         type="text"
         v-on:input="inputHandler($event,'this is not event obj')"
+        v-on:keyup.enter="consfirmedText"
       />
-      <p>{{text}}</p>
+      <p>{{finalText}}</p>
+      <form v-on:submit.prevent="submitHandler">
+        <input type="text" />
+        <button>Submit</button>
+      </form>
     </section>
   </body>
 </html>

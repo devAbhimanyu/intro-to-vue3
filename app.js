@@ -27,13 +27,19 @@ const eventApp = Vue.createApp({
       addBy: 10,
       reduceBY: 5,
       text: "",
+      finalText: "",
     };
   },
   methods: {
     inputHandler(event, secParam) {
       this.text = `from event ${event.target.value} ${secParam}`;
     },
-
+    consfirmedText() {
+      this.finalText = this.text;
+    },
+    submitHandler() {
+      alert("form submitted");
+    },
     increment(num) {
       this.counter += num;
     },
