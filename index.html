@@ -22,5 +22,19 @@
       <p>{{outputGoal()}}</p>
       <p>to check docs <a v-bind:href="vueLink">click here</a></p>
     </section>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in action</h2>
+      <button v-on:click="increment(addBy)">Add {{addBy}}</button>
+      <button v-on:click="decrement(reduceBY)">Remove {{reduceBY}}</button>
+      <p>{{counter}}</p>
+      <input
+        type="text"
+        v-on:input="inputHandler($event,'this is not event obj')"
+      />
+      <p>{{text}}</p>
+    </section>
   </body>
 </html>

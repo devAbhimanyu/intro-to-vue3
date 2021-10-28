@@ -19,3 +19,28 @@ const app = Vue.createApp({
 });
 
 app.mount("#user-goal");
+
+const eventApp = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+      addBy: 10,
+      reduceBY: 5,
+      text: "",
+    };
+  },
+  methods: {
+    inputHandler(event, secParam) {
+      this.text = `from event ${event.target.value} ${secParam}`;
+    },
+
+    increment(num) {
+      this.counter += num;
+    },
+    decrement(num) {
+      this.counter -= num;
+    },
+  },
+});
+
+eventApp.mount("#events");
