@@ -31,9 +31,32 @@ const eventApp = Vue.createApp({
       bindVal: "",
     };
   },
+  watch: {
+    counter(value) {
+      if (value > 50) {
+        this.counter = 0;
+      }
+    },
+  },
+  computed: {
+    computedText() {
+      console.log("computed value");
+      if (this.text.length) {
+        return `this is computed text ${this.text}`;
+      }
+      return "";
+    },
+  },
   methods: {
     inputHandler(event, secParam) {
       this.text = `from event ${event.target.value} ${secParam}`;
+    },
+    notComputedText() {
+      console.log("not computed value");
+      if (this.text.length) {
+        return `this is computed text ${this.text}`;
+      }
+      return "";
     },
     bindHandler(event) {
       this.bindVal = event.target.value;
