@@ -29,6 +29,7 @@
       <h2>Events in action</h2>
       <button v-on:click="increment(addBy)">Add {{addBy}}</button>
       <button v-on:click="decrement(reduceBY)">Remove {{reduceBY}}</button>
+      <p v-once>Starting counter {{counter}}</p>
       <p>{{counter}}</p>
       <input
         type="text"
@@ -40,6 +41,23 @@
         <input type="text" />
         <button>Submit</button>
       </form>
+      <section id="bindings and two way">
+        <h2>Handling bindings</h2>
+        <input
+          id="one-way"
+          type="text"
+          v-bind:value="bindVal"
+          v-on:input="bindHandler"
+        />
+        <input
+          id="two-way"
+          type="text"
+          v-model="bindVal"
+          placeholder="two way"
+        />
+        <button v-on:click="resetBind">Reset BindVal</button>
+        <p>{{bindVal}}</p>
+      </section>
     </section>
   </body>
 </html>

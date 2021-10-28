@@ -28,11 +28,18 @@ const eventApp = Vue.createApp({
       reduceBY: 5,
       text: "",
       finalText: "",
+      bindVal: "",
     };
   },
   methods: {
     inputHandler(event, secParam) {
       this.text = `from event ${event.target.value} ${secParam}`;
+    },
+    bindHandler(event) {
+      this.bindVal = event.target.value;
+    },
+    resetBind() {
+      this.bindVal = "";
     },
     consfirmedText() {
       this.finalText = this.text;
