@@ -46,7 +46,7 @@
         <input
           id="one-way"
           type="text"
-          v-bind:value="bindVal"
+          :value="bindVal"
           v-on:input="bindHandler"
         />
         <input
@@ -55,7 +55,7 @@
           v-model="bindVal"
           placeholder="two way"
         />
-        <button v-on:click="resetBind">Reset BindVal</button>
+        <button @click="resetBind">Reset BindVal</button>
         <p>{{bindVal}}</p>
       </section>
       <section id="computed">

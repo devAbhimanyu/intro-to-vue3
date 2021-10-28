@@ -32,6 +32,10 @@ const eventApp = Vue.createApp({
     };
   },
   watch: {
+    /**
+     * gets triggered when the counter value gets updated
+     * @param {number} value last updated counter value
+     */
     counter(value) {
       if (value > 50) {
         this.counter = 0;
@@ -39,6 +43,9 @@ const eventApp = Vue.createApp({
     },
   },
   computed: {
+    /**
+     * Gets triggered when one of the dependancies are updated
+     */
     computedText() {
       console.log("computed value");
       if (this.text.length) {
