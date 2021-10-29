@@ -1,11 +1,12 @@
 <template>
   <header>
-    <h1>FriendList</h1>
+    <h1>Contacts List</h1>
   </header>
   <section id="app">
+    <new-contact @add-new-contact="addContact"> </new-contact>
     <ul>
       <contact-detail
-        v-for="f in friends"
+        v-for="f in contacts"
         :key="f.id"
         :id="f.id"
         :name="f.name"
@@ -13,6 +14,7 @@
         :email="f.email"
         :is-fav="f.fav"
         @toggle-fav="toggleFavoriteStatus"
+        @delete="deleteContact"
       ></contact-detail>
     </ul>
   </section>
@@ -23,7 +25,7 @@ export default {
   name: "App",
   data() {
     return {
-      friends: [
+      contacts: [
         {
           id: 100,
           name: "abc",
@@ -41,14 +43,23 @@ export default {
         { id: 102, name: "qwe", phone: 10132, email: "qwe@whatmail.com" },
       ],
       value: "App component",
+      counter: 103,
     };
   },
   methods: {
     toggleFavoriteStatus(id) {
       // debugger;
       console.log(id);
-      const selectedContact = this.friends.find((f) => f.id === id);
+      const selectedContact = this.contacts.find((f) => f.id === id);
       selectedContact.fav = !selectedContact.fav;
+    },
+    addContact(data) {
+      this.counter++;
+      const newContact = { id: this.counter, fav: false, ...data };
+      this.contacts.push(newContact);
+    },
+    deleteContact(id) {
+      this.contacts = this.contacts.filter((c) => c.id !== id);
     },
   },
 };
@@ -85,7 +96,8 @@ header {
   list-style: none;
 }
 
-#app li {
+#app li,
+#app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;

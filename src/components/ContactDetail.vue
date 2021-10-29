@@ -5,6 +5,7 @@
     <button @click="toggleContact">
       {{ showContact ? "Hide" : "Show" }} Details
     </button>
+    <button @click="$emit('delete', id)">Delete</button>
     <ul v-if="showContact">
       <li><strong>Phone:</strong> {{ phoneNumber }}</li>
       <li><strong>Email:</strong> {{ email }}</li>
@@ -37,17 +38,17 @@ export default {
       //   },
     },
   },
-  //   emits:['toggle-fav'],
-  emits: {
-    "toggle-fav": function (id) {
-      if (id) {
-        return true;
-      } else {
-        console.warn("ID is missing in toggle-fav");
-        return false;
-      }
-    },
-  },
+  emits: ["toggle-fav", "delete"],
+  //   emits: {
+  //     "toggle-fav": function (id) {
+  //       if (id) {
+  //         return true;
+  //       } else {
+  //         console.warn("ID is missing in toggle-fav");
+  //         return false;
+  //       }
+  //     },
+  //   },
   data() {
     return {
       showContact: false,
