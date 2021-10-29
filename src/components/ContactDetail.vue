@@ -1,7 +1,7 @@
 <template>
   <li>
-    <h2>{{ name }} {{ favorite ? "(Fav)" : "" }}</h2>
-    <button @click="toggleFav">{{ !favorite ? "add" : "rem" }} fav</button>
+    <h2>{{ name }} {{ isFav ? "(Fav)" : "" }}</h2>
+    <button @click="toggleFav">{{ !isFav ? "add" : "rem" }} fav</button>
     <button @click="toggleContact">
       {{ showContact ? "Hide" : "Show" }} Details
     </button>
@@ -17,6 +17,10 @@ export default {
   name: "ContactDetail",
   //   props: ["name", "phoneNumber", "email", "isFav"],
   props: {
+    id: {
+      type: Number,
+      required: true,
+    },
     name: String,
     phoneNumber: Number,
     email: { type: String, required: true },
@@ -33,10 +37,21 @@ export default {
       //   },
     },
   },
+  //   emits:['toggle-fav'],
+  emits: {
+    "toggle-fav": function (id) {
+      if (id) {
+        return true;
+      } else {
+        console.warn("ID is missing in toggle-fav");
+        return false;
+      }
+    },
+  },
   data() {
     return {
       showContact: false,
-      favorite: this.isFav,
+      //   favorite: this.isFav,
     };
   },
   methods: {
@@ -44,7 +59,8 @@ export default {
       this.showContact = !this.showContact;
     },
     toggleFav() {
-      this.favorite = !this.favorite;
+      this.$emit("toggle-fav", this.id);
+      //   this.favorite = !this.favorite;
     },
   },
 };
