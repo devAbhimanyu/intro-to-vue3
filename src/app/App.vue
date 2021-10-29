@@ -10,6 +10,7 @@
         :name="f.name"
         :phone-number="f.phone"
         :email="f.email"
+        :is-fav="f.fav"
       ></contact-detail>
     </ul>
   </section>
@@ -21,8 +22,20 @@ export default {
   data() {
     return {
       friends: [
-        { id: 100, name: "abc", phone: 10201, email: "@abcwhatmail.com" },
-        { id: 101, name: "def", phone: 1022301, email: "def@whatmail.com" },
+        {
+          id: 100,
+          name: "abc",
+          phone: 10201,
+          email: "@abcwhatmail.com",
+          fav: false,
+        },
+        {
+          id: 101,
+          name: "def",
+          phone: 1022301,
+          email: "def@whatmail.com",
+          fav: true,
+        },
         { id: 102, name: "qwe", phone: 10132, email: "qwe@whatmail.com" },
       ],
       value: "App component",
