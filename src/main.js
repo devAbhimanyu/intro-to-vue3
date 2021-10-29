@@ -1,4 +1,7 @@
 import { createApp } from "vue";
 import App from "./app/App.vue";
+import ContactDetail from "./components/ContactDetail.vue";
 
-createApp(App).mount("#app");
+const app = createApp(App);
+app.component("contact-detail", ContactDetail);
+app.mount("#app");
