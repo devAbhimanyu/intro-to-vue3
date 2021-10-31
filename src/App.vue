@@ -1,55 +1,28 @@
 <template>
-  <div>
-    <Header />
-    <button @click="updatedSelected('active-goals')">active</button>
-    <button @click="updatedSelected('manage-goals')">manage</button>
-    <!-- <active-goals v-if="selectedComp === 'active-goals'"></active-goals>
-    <manage-goals v-if="selectedComp === 'manage-goals'"></manage-goals> -->
-    <!-- without keep-alive state is lost when component is changed -->
-    <keep-alive>
-      <component :is="selectedComp"> </component>
-    </keep-alive>
-  </div>
+  <the-form></the-form>
 </template>
 
 <script>
-import Header from "./components/TheHeader.vue";
-import ActiveGoals from "./components/ActiveGoals.vue";
-import ManageGoals from "./components/ManageGoals.vue";
+import TheForm from './components/TheForm.vue';
 
 export default {
-  /**
-   * local component reg
-   */
   components: {
-    Header,
-    ActiveGoals,
-    ManageGoals,
-  },
-  data() {
-    return {
-      selectedComp: "active-goals",
-      activeUser: {
-        name: "Maximilian Schwarzmüller",
-        description: "Site owner and admin",
-        role: "admin",
-      },
-    };
-  },
-  methods: {
-    updatedSelected(compName) {
-      this.selectedComp = compName;
-    },
-  },
-};
+    TheForm
+  }  
+}
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: sans-serif;
 }
 
 body {
   margin: 0;
+  background-color: #292929;
 }
 </style>

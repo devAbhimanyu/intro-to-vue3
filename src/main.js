@@ -1,14 +1,5 @@
-import { createApp } from "vue";
+import { createApp } from 'vue';
 
-import App from "./App.vue";
-import BaseBadge from "./components/BaseBadge.vue";
-import BaseCard from "./components/BaseCard.vue";
+import App from './App.vue';
 
-const app = createApp(App);
-/**
- * global component
- */
-app.component("base-badge", BaseBadge);
-app.component("base-card", BaseCard);
-
-app.mount("#app");
+createApp(App).mount('#app');
