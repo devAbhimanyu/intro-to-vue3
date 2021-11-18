@@ -1,17 +1,30 @@
 <template>
+  <button @click="confirmInput">confirm</button>
   <ul>
-    <user-item v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role"></user-item>
+    <user-item
+      v-for="user in users"
+      :key="user.id"
+      :name="user.fullName"
+      :role="user.role"
+    ></user-item>
   </ul>
 </template>
 
 <script>
-import UserItem from './UserItem.vue';
+import UserItem from "./UserItem.vue";
 
 export default {
   components: {
     UserItem,
   },
-  inject: ['users'],
+  inject: ["users"],
+  methods: {
+    confirmInput() {
+      //some logic and then navigate to some route
+      this.$router.push("/teams");
+      // this.$router.back()
+    },
+  },
 };
 </script>
 
