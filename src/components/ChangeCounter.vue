@@ -11,11 +11,13 @@
 </template>
 
 <script>
+import { mapMutations, mapActions } from "vuex";
 export default {
   methods: {
-    increment() {
-      this.$store.commit("increment");
-    },
+    // increment() {
+    //   this.$store.commit("increment");
+    // },
+    ...mapMutations(["increment"]),
     incrementBy() {
       //   this.$store.commit("incrementBy", { value: 10 });
       this.$store.commit({
@@ -23,9 +25,12 @@ export default {
         value: 10,
       });
     },
-    increment2() {
-      this.$store.dispatch("incrementAfter2Sec");
-    },
+    // increment2() {
+    //   this.$store.dispatch("incrementAfter2Sec");
+    // },
+    ...mapActions({
+      increment2: "incrementAfter2Sec",
+    }),
     incrementBy2() {
       //   this.$store.commit("incrementBy", { value: 10 });
       this.$store.dispatch({
