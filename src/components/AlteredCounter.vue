@@ -1,6 +1,7 @@
 <template>
   <p>triple of counter is {{ cubeCounter }}</p>
   <p>normalized counter is {{ normCounter }}</p>
+  <p>module with global getter is {{ globalCounter }}</p>
 </template>
 
 <script>
@@ -17,6 +18,7 @@ export default {
     ...mapGetters({
       cubeCounter: "finalCounter",
       normCounter: "normalizedCounter",
+      globalCounter: "globalCounter",
     }),
   },
 };
