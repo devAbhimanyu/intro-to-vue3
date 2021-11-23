@@ -1,5 +1,5 @@
 <template>
-  <div class="home">Coach Detail</div>
+  <div class="home">Mentor Detail</div>
 </template>
 
 <script></script>

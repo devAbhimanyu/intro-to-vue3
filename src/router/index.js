@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import CoachDetail from "../views/coaches/CoachDetail.vue";
-import CoachList from "../views/coaches/CoachList.vue";
-import CoachRegister from "../views/coaches/CoachRegister.vue";
+import MentorDetail from "../views/mentors/MentorDetail.vue";
+import MentorList from "../views/mentors/MentorList.vue";
+import MentorRegister from "../views/mentors/MentorRegister.vue";
 import ContactCoach from "../views/requests/ContactCoach.vue";
 import RequestsReceived from "../views/requests/RequestsReceived.vue";
 import NotFound from "../views/NotFound.vue";
@@ -9,17 +9,16 @@ import NotFound from "../views/NotFound.vue";
 const routes = [
   {
     path: "/",
-    redirect: "/coaches",
+    redirect: "/mentors",
   },
   {
-    path: "/coaches",
-    name: "Coaches",
-    component: CoachList,
+    path: "/mentors",
+    name: "Mentors",
+    component: MentorList,
   },
   {
-    path: "/coaches/:id",
-    name: "Coach",
-    component: CoachDetail,
+    path: "/mentors/:id",
+    component: MentorDetail,
     children: [
       {
         path: "contact",
@@ -30,7 +29,7 @@ const routes = [
   {
     path: "/register",
     name: "Register",
-    component: CoachRegister,
+    component: MentorRegister,
   },
   {
     path: "/requests",
