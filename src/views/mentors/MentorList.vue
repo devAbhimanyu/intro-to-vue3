@@ -1,38 +1,75 @@
 <template>
-  <section>FILTER</section>
   <section>
-    <div class="controls">
-      <button>Refresh</button>
-      <router-link to="/register">Register as Mentor</router-link>
-    </div>
-    <ul v-if="hasMentors">
-      <mentor-info
-        v-for="mentor in filteredMentors"
-        :key="mentor.id"
-        :id="mentor.id"
-        :first-name="mentor.firstName"
-        :last-name="mentor.lastName"
-        :rate="mentor.hourlyRate"
-        :areas="mentor.areas"
-      ></mentor-info>
-    </ul>
-    <h3 v-else>No mentors found.</h3>
+    <mentor-filter @change-filter="setFilters"></mentor-filter>
+  </section>
+  <section>
+    <base-card>
+      <div class="controls">
+        <base-button mode="outline">Refresh</base-button>
+        <base-button v-if="!isCoach" link to="/register"
+          >Register as Mentor</base-button
+        >
+      </div>
+      <ul v-if="hasCoaches">
+        <mentor-info
+          v-for="coach in filteredCoaches"
+          :key="coach.id"
+          :id="coach.id"
+          :first-name="coach.firstName"
+          :last-name="coach.lastName"
+          :rate="coach.hourlyRate"
+          :areas="coach.areas"
+        ></mentor-info>
+      </ul>
+      <h3 v-else>No coaches found.</h3>
+    </base-card>
   </section>
 </template>
 
 <script>
 import MentorInfo from "../../components/mentors/MentorInfo.vue";
+import MentorFilter from "../../components/mentors/MentorFilter.vue";
 
 export default {
   components: {
     MentorInfo,
+    MentorFilter,
+  },
+  data() {
+    return {
+      activeFilters: {
+        frontend: true,
+        backend: true,
+        career: true,
+      },
+    };
   },
   computed: {
-    filteredMentors() {
-      return this.$store.getters["mentors/mentorList"];
+    isCoach() {
+      return this.$store.getters["mentors/isMentor"];
     },
-    hasMentors() {
+    filteredCoaches() {
+      const coaches = this.$store.getters["mentors/mentorList"];
+      return coaches.filter((coach) => {
+        if (this.activeFilters.frontend && coach.areas.includes("frontend")) {
+          return true;
+        }
+        if (this.activeFilters.backend && coach.areas.includes("backend")) {
+          return true;
+        }
+        if (this.activeFilters.career && coach.areas.includes("career")) {
+          return true;
+        }
+        return false;
+      });
+    },
+    hasCoaches() {
       return this.$store.getters["mentors/hasMentors"];
+    },
+  },
+  methods: {
+    setFilters(updatedFilters) {
+      this.activeFilters = updatedFilters;
     },
   },
 };

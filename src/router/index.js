@@ -18,6 +18,7 @@ const routes = [
   },
   {
     path: "/mentors/:id",
+    props: true,
     component: MentorDetail,
     children: [
       {
