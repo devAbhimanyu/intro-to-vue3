@@ -1,29 +1,31 @@
 <template>
-  <section>
-    <mentor-filter @change-filter="setFilters"></mentor-filter>
-  </section>
-  <section>
-    <base-card>
-      <div class="controls">
-        <base-button mode="outline">Refresh</base-button>
-        <base-button v-if="!isCoach" link to="/register"
-          >Register as Mentor</base-button
-        >
-      </div>
-      <ul v-if="hasCoaches">
-        <mentor-info
-          v-for="coach in filteredCoaches"
-          :key="coach.id"
-          :id="coach.id"
-          :first-name="coach.firstName"
-          :last-name="coach.lastName"
-          :rate="coach.hourlyRate"
-          :areas="coach.areas"
-        ></mentor-info>
-      </ul>
-      <h3 v-else>No coaches found.</h3>
-    </base-card>
-  </section>
+  <main id="mentor-list-comp">
+    <section>
+      <mentor-filter @change-filter="setFilters"></mentor-filter>
+    </section>
+    <section>
+      <base-card>
+        <div class="controls">
+          <base-button mode="outline">Refresh</base-button>
+          <base-button v-if="!isCoach" link to="/register"
+            >Register as Mentor</base-button
+          >
+        </div>
+        <ul v-if="hasCoaches">
+          <mentor-info
+            v-for="coach in filteredCoaches"
+            :key="coach.id"
+            :id="coach.id"
+            :first-name="coach.firstName"
+            :last-name="coach.lastName"
+            :rate="coach.hourlyRate"
+            :areas="coach.areas"
+          ></mentor-info>
+        </ul>
+        <h3 v-else>No coaches found.</h3>
+      </base-card>
+    </section>
+  </main>
 </template>
 
 <script>

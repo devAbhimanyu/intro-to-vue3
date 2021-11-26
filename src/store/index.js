@@ -1,8 +1,11 @@
 import { createStore } from "vuex";
-import { mentorsModule } from "./modules";
+import { mentorsModule, requestsModule } from "./modules";
 
 export default createStore({
-  modules: { mentors: mentorsModule },
+  modules: {
+    mentors: mentorsModule,
+    requests: requestsModule,
+  },
   state() {
     return {
       userId: "c3",
