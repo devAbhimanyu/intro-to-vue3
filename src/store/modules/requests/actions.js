@@ -1,5 +1,5 @@
 export default {
-  async contactCoach(context, payload) {
+  async contactMentor(context, payload) {
     const newRequest = {
       userEmail: payload.email,
       message: payload.message,
