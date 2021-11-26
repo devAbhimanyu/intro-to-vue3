@@ -55,7 +55,6 @@ export default {
     },
   },
   created() {
-    debugger;
     this.selectedMentor = this.$store.getters["mentors/mentorList"].find(
       (coach) => coach.id === this.id
     );
