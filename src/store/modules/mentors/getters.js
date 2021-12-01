@@ -10,4 +10,12 @@ export default {
     const userId = rootGetters.userId;
     return mentorList.some((mentor) => mentor.id === userId);
   },
+  shouldUpdate(state) {
+    const lastFetch = state.lastFetch;
+    if (!lastFetch) {
+      return true;
+    }
+    const currentTimeStamp = new Date().getTime();
+    return (currentTimeStamp - lastFetch) / 1000 > 60;
+  },
 };
