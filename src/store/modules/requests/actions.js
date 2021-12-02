@@ -28,8 +28,10 @@ export default {
   },
   async fetchRequests(context) {
     const mentorId = context.rootGetters.userId;
+    const token = context.rootGetters.token;
+
     const response = await fetch(
-      `https://vue-test-app-7ba88-default-rtdb.asia-southeast1.firebasedatabase.app/requests/${mentorId}.json`
+      `https://vue-test-app-7ba88-default-rtdb.asia-southeast1.firebasedatabase.app/requests/${mentorId}.json?auth=${token}`
     );
     const responseData = await response.json();
 

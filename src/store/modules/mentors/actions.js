@@ -10,9 +10,9 @@ export default {
       hourlyRate: data.rate,
       areas: data.areas,
     };
-
+    const token = context.rootGetters.token;
     const response = await fetch(
-      `https://vue-test-app-7ba88-default-rtdb.asia-southeast1.firebasedatabase.app/mentors/${userId}.json`,
+      `https://vue-test-app-7ba88-default-rtdb.asia-southeast1.firebasedatabase.app/mentors/${userId}.json?auth=${token}`,
       {
         method: "PUT",
         body: JSON.stringify(mentorInfo),
