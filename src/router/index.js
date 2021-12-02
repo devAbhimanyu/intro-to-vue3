@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MentorDetail from "../views/mentors/MentorDetail.vue";
 import MentorList from "../views/mentors/MentorList.vue";
-import MentorRegister from "../views/mentors/MentorRegister.vue";
-import ContactCoach from "../views/requests/ContactCoach.vue";
-import RequestsReceived from "../views/requests/RequestsReceived.vue";
 import NotFound from "../views/NotFound.vue";
-import UserAuth from "../views/auth/UserAuth";
 import store from "../store";
+
+const MentorDetail = () => import("../views/mentors/MentorDetail.vue");
+const MentorRegister = () => import("../views/mentors/MentorRegister.vue");
+const ContactCoach = () => import("../views/requests/ContactCoach.vue");
+const RequestsReceived = () => import("../views/requests/RequestsReceived.vue");
+const UserAuth = () => import("../views/auth/UserAuth");
 
 const routes = [
   {
